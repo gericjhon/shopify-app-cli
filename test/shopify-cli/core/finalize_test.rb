@@ -59,8 +59,8 @@ module ShopifyCli
 
       def test_deliver_raises_shopifycli_bug_if_io_found_but_used
         IO.expects(:new).raises(ArgumentError.new)
-        IO.any_instance.expects(:closed?).returns(false)
-        IO.any_instance.expects(:fileno).returns(9).twice
+        IO.any_instance.stubs(:closed?).returns(false)
+        IO.any_instance.stubs(:fileno).returns(9).twice
         IO.any_instance.expects(:stat).returns(mock(ftype: 'testtype'))
 
         Finalize.request_cd('path/to/cd')
