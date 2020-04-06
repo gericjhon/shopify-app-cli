@@ -16,7 +16,8 @@ module Minitest
     end
 
     def run_cmd(cmd)
-      ShopifyCli::EntryPoint.call(cmd.split(' '), @context)
+      ShopifyCli::Git.stubs(:sha).returns("bb6f42193239a248f054e5019e469bc75f3adf1b")
+      ShopifyCli::Core::EntryPoint.call(cmd.split(' '), @context)
     end
 
     def capture_io(&block)

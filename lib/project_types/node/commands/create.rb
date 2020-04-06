@@ -82,7 +82,7 @@ module Node
 
       def build(name)
         ShopifyCli::Git.clone('https://github.com/Shopify/shopify-app-node.git', name)
-        ShopifyCli::Finalize.request_cd(name)
+        ShopifyCli::Core::Finalize.request_cd(name)
 
         @ctx.root = File.join(@ctx.root, name)
 
